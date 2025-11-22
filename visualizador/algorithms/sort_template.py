@@ -19,3 +19,4 @@ def step():
     # - si swap=True, primero hacé el intercambio en 'items'
     # - cuando termines, devolvé {"done": True}
     return {"done": True}
+
