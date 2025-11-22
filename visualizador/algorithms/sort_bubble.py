@@ -4,7 +4,7 @@ items = [] #Lista de barras 4 5 1 3 2
 n = 0 #Longitud de la lista
 i = 0
 j = 0
-
+#ignorar comentario
 def init(vals):
     global items, n, i, j
     items = list(vals)
