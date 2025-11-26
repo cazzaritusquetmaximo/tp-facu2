@@ -15,7 +15,7 @@ def init(vals):
     j = i + 1
     min_idx = i
     fase = "buscar"
-
+"""
 def step():
     # TODO:
     # - Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
@@ -26,3 +26,35 @@ def step():
     #
     # Cuando i llegue al final, devolvé {"done": True}.
     return {"done": True}
+"""
+
+#no funciona ni ahi, lo escribi a modo de implementar y entender el contrato
+
+def step():
+    # TO-DO:
+    # - Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
+    #   Devolver {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
+    global items,n,i,j,min_idx,fase
+    fase="buscar"
+    min_idx=items[i]
+    j+=1
+    if items[j]<min_idx:
+        min_idx=items[j]
+        return {"a": min_idx, "b": j, "swap": False, "done": False}
+
+    #   Al terminar el barrido, pasar a fase "swap".
+    # - Fase "swap": si min_idx != i, hacer ese único swap y devolverlo.
+    if min_idx!=items[i]:
+        fase="swap"
+        items[j]= items[i]
+        items[i]=min_idx
+        return {"a": min_idx, "b": j, "swap": True, "done": False}
+
+    #   Luego avanzar i, reiniciar j=i+1 y min_idx=i, volver a "buscar".
+    i+=1
+    j=i+1
+    fase="buscar"
+
+    # Cuando i llegue al final, devolvé {"done": True}.
+    if i==len(items):
+        return {"done": True}
