@@ -17,7 +17,7 @@ def init(vals):
     fase = "buscar"
 """
 def step():
-    # TODO:
+    # TO-DO:
     # - Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
     #   Devolver {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
     #   Al terminar el barrido, pasar a fase "swap".
@@ -27,35 +27,22 @@ def step():
     # Cuando i llegue al final, devolvé {"done": True}.
     return {"done": True}
 """
-
-#no funciona ni ahi, lo escribi a modo de implementar y entender el contrato
-
+#02:04am, 27nov
 def step():
-    # TO-DO:
-    # - Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
-    #   Devolver {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
-    global items,n,i,j,min_idx,fase
 
-    min_idx=items[i]
-    j+=1
-    if items[j]<min_idx:
-        fase="buscar"
-        min_idx=items[j]
-        return {"a": min_idx, "b": j, "swap": False, "done": False}
+    if items[j]<items[min_idx]: ##compara el item delantero a "i"
+        fase="buscar" ##no se si va aca
+        min_idx=items[j]    ##le da valor nuevo actualizado al indice minimo del barrido
+        return {"a": min_idx, "b": j+1, "swap": False, "done": False} ## => actualizar "j_actual" seria j+1?
 
-    #   Al terminar el barrido, pasar a fase "swap".
-    # - Fase "swap": si min_idx != i, hacer ese único swap y devolverlo.
-    if min_idx!=items[i]:
+    ##el barrido termina cuando hizo [i:n-1] vueltas pero como corno se le indico???
+
+    ##fase swap
+    if min_idx!=i:
         fase="swap"
-        items[j]= items[i]
-        items[i]=min_idx
-        return {"a": min_idx, "b": j, "swap": True, "done": False}
+        items[j]=items[i], items[i]=items[min_idx]
+        return {"a": min_idx, "b": j, "swap": True, "done": False} ## => solo cambie swap=True
 
-    #   Luego avanzar i, reiniciar j=i+1 y min_idx=i, volver a "buscar".
-    i+=1
-    j=i+1
-    fase="buscar"
-
-    # Cuando i llegue al final, devolvé {"done": True}.
-    if i==len(items):
+    i+=1, fase="buscar", j=i+1
+    if >=len(items):
         return {"done": True}
