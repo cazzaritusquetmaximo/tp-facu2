@@ -58,3 +58,7 @@ def step():
     # Cuando i llegue al final, devolvé {"done": True}.
     if i>=n-1:
         return {"done": True}
+
+
+## si lo ejecuto con el visualizador solo funciona 1 vez, no ordena nada porque hay algo a lo que le estoy errando(creo que =>
+## => ademas ordena de atras para adelante), y nunca me deja "recargar" el script, me salta "no se pudo  cargar el .py"
