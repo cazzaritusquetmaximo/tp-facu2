@@ -20,28 +20,31 @@ def step():
 
     global items, n, i, j, min_idx, fase
 
-    if j<n: ##barrido
+    if i==n-1:
+        return {"done": True}
+
+    while j<n: ##barrido
         fase="buscar"
         if items[j]<items[min_idx]:
             min_idx=j
+            return {"a": min_idx, "b": j, "swap": False, "done": False}
         j+=1
         return {"a": min_idx, "b": j, "swap": False, "done": False}
 
     if j==n: ##barrido terminado, fase swap
         fase="swap"
         if min_idx!=i:
+            a=i
+            b=min_idx
             items[i],items[min_idx]=items[min_idx],items[i]
             i+=1
             j=i+1
             min_idx=i
             fase="buscar"
-            return {"a": min_idx, "b": j, "swap": True, "done": False}
+            return {"a": a, "b": b, "swap": True, "done": False}
         else:
             i+=1
             j=i+1
             min_idx=i
             fase="buscar"
-            return {"a": min_idx, "b": j, "swap": False, "done": False}
-
-    if i==n-1:
-        return {"a": min_idx, "b": j, "swap": False, "done": True}
+            return {"a": i, "b": min_idx, "swap": True, "done": False}
