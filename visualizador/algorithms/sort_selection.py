@@ -27,22 +27,34 @@ def step():
     # Cuando i llegue al final, devolvé {"done": True}.
     return {"done": True}
 """
-#02:04am, 27nov
 def step():
+#[2,8,5,3,9,4,1]
+    global items, n, i, j, min_idx, fase
 
-    if items[j]<items[min_idx]: ##compara el item delantero a "i"
-        fase="buscar" ##no se si va aca
-        min_idx=items[j]    ##le da valor nuevo actualizado al indice minimo del barrido
-        return {"a": min_idx, "b": j+1, "swap": False, "done": False} ## => actualizar "j_actual" seria j+1?
+    # Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
+    if j<n:
+        fase="buscar"
+        if items[j]<items[min_idx]:
+            min_idx=j
+        j+=1
+    # Devolver {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
+        return {"a": min_idx, "b": j, "swap": False, "done": False}
 
-    ##el barrido termina cuando hizo [i:n-1] vueltas pero como corno se le indico???
-
-    ##fase swap
-    if min_idx!=i:
+    #   Al terminar el barrido, pasar a fase "swap".
+    if j>=n:
         fase="swap"
-        items[j]=items[i], items[i]=items[min_idx]
-        return {"a": min_idx, "b": j, "swap": True, "done": False} ## => solo cambie swap=True
+    # Fase "swap": si min_idx != i, hacer ese único swap y devolverlo.
+        if min_idx!=i:
+            items[?]=items[?], items[?]=items[?]
+            return {"a": min_idx, "b": j, "swap": True, "done": False}
 
-    i+=1, fase="buscar", j=i+1
-    if >=len(items):
+    # Luego avanzar i, reiniciar j=i+1 y min_idx=i, volver a "buscar".
+    if "swap"=True:
+        i+=1
+        j=i+1
+        min_idx=i
+        fase="buscar"
+
+    # Cuando i llegue al final, devolvé {"done": True}.
+    if i>=n-1:
         return {"done": True}
