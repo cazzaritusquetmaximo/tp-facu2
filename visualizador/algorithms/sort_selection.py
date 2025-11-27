@@ -57,7 +57,7 @@ def step():
 
     # Cuando i llegue al final, devolvé {"done": True}.
     if i>=n-1:
-        return {"done": True}
+        return {"a": min_idx, "b": j, "swap": False, "done": True}
 
 
 ## si lo ejecuto con el visualizador solo funciona 1 vez, no ordena nada porque hay algo a lo que le estoy errando(creo que =>
