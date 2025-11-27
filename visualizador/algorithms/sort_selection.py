@@ -35,10 +35,11 @@ def step():
     # - Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
     #   Devolver {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
     global items,n,i,j,min_idx,fase
-    fase="buscar"
+
     min_idx=items[i]
     j+=1
     if items[j]<min_idx:
+        fase="buscar"
         min_idx=items[j]
         return {"a": min_idx, "b": j, "swap": False, "done": False}
 
