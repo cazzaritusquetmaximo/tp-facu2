@@ -2,9 +2,11 @@
 Cazzari Tusquet, Máximo
 Castro, Hernán
 
-# Bubble Sort:
-- Fecha 25/11
+# Introduccion general (no técnica) de Bubble_Sort:
+El algoritmo Bubble Sort ordena la lista realizando múltiples pasadas desde el primer elemento. En cada vuelta, compara elementos consecutivos y, si el que está adelante es más chico que el actual, los deja como están. En cambio, si el elemento actual es mayor, los intercambia. De esta forma, los valores más grandes van “subiendo” hacia el final de la lista con cada recorrido, como si fueran empujados. El proceso se repite tantas veces como sea necesario según la longitud de la lista, hasta que todos los elementos quedan ordenados.
 
+# Informe de Bubble_Sort:
+(primera versión )
 def step()
     for a in range(n):
         for b in range(n-1-a):
@@ -16,6 +18,7 @@ def step()
 Problema: Al retornar luego de realizar el swap, la iteración del bucle for se reinicia desde 0, además de no cumplir con el contrato de la función que especifíca devolver un solo micro-paso.
 Objetivo: Encontrar otro método para que no se reinicie el bucle for.
 
+(versión sin optimizar renglones repetidos)
 global n,i,j
     if i == n-1:
         return {"done": True}
@@ -42,6 +45,24 @@ Solucionado: Se eliminaron los bucles for para que no se reinicie el proceso y s
 "i" actua como la cantidad de vueltas que debe realizar.
 "j" actua como el índice en el que esta posicionado, los punteros.
 
+(versión final)
+def step():
+
+    global n,i,j
+
+    if i == n-1:
+        return {"done": True}
+
+    if j+1 == n-i:
+        j=0
+        i+=1
+    b = j
+    j += 1
+    if items[b] > items[b+1]:
+        items[b],items[b+1]=items[b+1],items[b] #swap
+        return {"a": b, "b": b+1, "swap": True, "done": False}
+    else:
+        return {"a": b, "b": b+1, "swap": False, "done": False}
 # Notas:
 - La función step siempre debe devolver un diccionario, o de los contrario no funcionara correctamente. (Puede romper el html)
 - "a" y "b" son variables locales, solo usadas para mantener guardado los datos de los indices a la hora de retornarlos.
@@ -54,14 +75,10 @@ Solucionado: Se eliminaron los bucles for para que no se reinicie el proceso y s
 - Se movió el bloque de comparación y swap fuera del if (j+1 == n-i) porque estaba escrito dos veces con la misma lógica. Se comparaba 
 mientras el iterador llegaba hacia el final y de nuevo al llegar al final, generando código duplicado.
 
-
-
-
-
-
+# Introducción general (no técnica) de Selection_Sort:
+En el algoritmo Selection Sort, el proceso comienza desde el primer elemento de la lista. En cada vuelta (la cantidad de vueltas está dada por la longitud de la lista), recorre los elementos restantes para encontrar el de menor valor. Una vez identificado, ese valor se mantiene guardado hasta el final de la iteración y luego se intercambia con el elemento correspondiente a esa vuelta. Así, en cada pasada se coloca en su posición definitiva el elemento más pequeño que quedaba por ordenar.
 
 # Informe de selection_sort:
-fecha 27nov
 
 - Al principio no le veía sentido a la variable n y tampoco entendía cómo finalizar un barrido. Después pude relacionar ambas cosas.
 
@@ -78,6 +95,7 @@ visualizador no funcionaba porque no recibía datos.
 
 - Se implementó la fn buscar() que...
 
+(versión final)
 def step():
     global items, n, i, j, min_idx, fase
 
@@ -111,8 +129,41 @@ def buscar():
     min_idx=i
     fase="buscar"
 
+# Introducción general (no técnica) de Insertion_Sort:
+En el algoritmo Insertion Sort, se comienza desde el primer elemento de la lista, considerándolo como ya ordenado. A partir de ahí, en cada iteración se toma el siguiente elemento y se lo compara con los que ya están ordenados anteriormente. Si está fuera de lugar, se lo va desplazando hacia atrás hasta insertarlo en la posición correcta. De esta manera, el orden se va construyendo mientras se avanza por la lista.
+
 # informe de insertion_sort:
 
 No se había colocado el global i, j, min_idx, fase en la función step(), lo cual hacia que ni funcione.
 
 - En una primera instancia, siguiendo las observaciones a seguir, se implementó un while para comparar y swappear el iterador con el adyacente previo, pero luego se modificó por condicionales porque un while no tenía sentido aquí, respetando el contrato, ya que por cada micropaso hay un retorno de valores.
+
+(versión final)
+def step():
+
+    global items, n, i, j
+
+    if i >= n:
+        return {"done": True}
+
+    if j == None:
+        j=i
+        return {"a": i, "b": j, "swap": False, "done": False}
+
+    if j>0:
+        if items[j-1] > items[j]:
+            items[j-1],items[j]=items[j],items[j-1]
+            a=j
+            b=j-1
+            j=j-1
+            return {"a": a, "b": b, "swap": True, "done": False}
+        else:
+            a=j
+            b=j-1
+            j=j-1
+            return {"a": a, "b": b, "swap": False, "done": False}
+
+    if j<=0:
+        i+=1
+        j=None
+        return {"a": i, "b": j, "swap": False, "done": False}
