@@ -29,19 +29,10 @@ def step():
     if j+1 == n-i: #Comparamos si ya se llego al final. De ser el caso, reiniciamos el indice y pasamos a la siguiente vuelta.
         j=0
         i+=1
-        b = j #Le damos a b el valor de j para que podamos agregar +1 a j sin afectar al condicional.
-        j += 1
-        if items[b] > items[b+1]:
-            items[b],items[b+1]=items[b+1],items[b] #swap
-            return {"a": b, "b": b+1, "swap": True, "done": False}
-        else: #no swap, pero retornamos False para que se produzca el raycast. (Intentar comentar esta parte para ver cual es el error)
-            return {"a": b, "b": b+1, "swap": False, "done": False}
-
-    else: #Mismo proceso de arriba, pero sin reiniciar j.
-        b = j
-        j += 1
-        if items[b] > items[b+1]:
-            items[b],items[b+1]=items[b+1],items[b]
-            return {"a": b, "b": b+1, "swap": True, "done": False}
-        else:
-            return {"a": b, "b": b+1, "swap": False, "done": False}
+    b = j #Le damos a b el valor de j para que podamos agregar +1 a j sin afectar al condicional.
+    j += 1
+    if items[b] > items[b+1]:
+        items[b],items[b+1]=items[b+1],items[b] #swap
+        return {"a": b, "b": b+1, "swap": True, "done": False}
+    else: #no swap, pero retornamos False para que se produzca el raycast. (Intentar comentar esta parte para ver cual es el error)
+        return {"a": b, "b": b+1, "swap": False, "done": False}
