@@ -17,7 +17,6 @@ def init(vals):
     fase = "buscar"
 
 def step():
-
     global items, n, i, j, min_idx, fase
 
     if i==n-1:
@@ -37,14 +36,15 @@ def step():
             a=i
             b=min_idx
             items[i],items[min_idx]=items[min_idx],items[i]
-            i+=1
-            j=i+1
-            min_idx=i
-            fase="buscar"
+            buscar()
             return {"a": a, "b": b, "swap": True, "done": False}
         else:
-            i+=1
-            j=i+1
-            min_idx=i
-            fase="buscar"
+            buscar()
             return {"a": i, "b": min_idx, "swap": True, "done": False}
+        
+def buscar():
+    global items, n, i, j, min_idx, fase
+    i+=1
+    j=i+1
+    min_idx=i
+    fase="buscar"

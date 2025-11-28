@@ -41,3 +41,9 @@ global n,i,j
 Solucionado: Se eliminaron los bucles for para que no se reinicie el proceso y se trabajo con las variables globales "i" y "j".
 "i" actua como la cantidad de vueltas que debe realizar.
 "j" actua como el indice en el que esta posicionado, los punteros.
+
+Notas:
+- La función step siempre debe devolver un diccionario, o de los contrario no funcionara correctamente. (Puede romper el html)
+- "a" y "b" son variables locales, solo usadas para mantener guardado los datos de los indices a la hora de retornarlos.
+- Si se utilizan las variables que estan fuera de la función step, se las debe declarar como global dentro de esta.
+- El condicional que retorna "done":True debe estar al principio, ya que primero verifica si el algoritmo terminó o debe continuar.
