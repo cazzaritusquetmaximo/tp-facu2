@@ -111,7 +111,7 @@ def buscar():
     min_idx=i
     fase="buscar"
 
-#informe de insertion_sort:
+# informe de insertion_sort:
 
 No se había colocado el global i, j, min_idx, fase en la función step(), lo cual hacia que ni funcione.
 
