@@ -115,3 +115,4 @@ def buscar():
 
 No se había colocado el global i, j, min_idx, fase en la función step(), lo cual hacia que ni funcione.
 
+- En una primera instancia, siguiendo las observaciones a seguir, se implementó un while para comparar y swappear el iterador con el adyacente previo, pero luego se modificó por condicionales porque un while no tenía sentido aquí, respetando el contrato, ya que por cada micropaso hay un retorno de valores.
