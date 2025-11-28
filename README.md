@@ -1,8 +1,8 @@
-Integrantes:
+# Integrantes:
 Cazzari Tusquet, Máximo
 Castro, Hernán
 
-##Bubble Sort:
+# Bubble Sort:
 - Fecha 25/11
 
 def step()
@@ -42,7 +42,7 @@ Solucionado: Se eliminaron los bucles for para que no se reinicie el proceso y s
 "i" actua como la cantidad de vueltas que debe realizar.
 "j" actua como el índice en el que esta posicionado, los punteros.
 
-Notas:
+# Notas:
 - La función step siempre debe devolver un diccionario, o de los contrario no funcionara correctamente. (Puede romper el html)
 - "a" y "b" son variables locales, solo usadas para mantener guardado los datos de los indices a la hora de retornarlos.
 - Si se utilizan las variables que estan fuera de la función step, se las debe declarar como global dentro de esta.
@@ -60,25 +60,23 @@ mientras el iterador llegaba hacia el final y de nuevo al llegar al final, gener
 
 
 
-##Informe de selection_sort:
+# Informe de selection_sort:
 fecha 27nov
 
-# Al principio no le veía sentido a la variable n y tampoco entendía cómo finalizar un
-barrido. Después pude relacionar ambas cosas.
+- Al principio no le veía sentido a la variable n y tampoco entendía cómo finalizar un barrido. Después pude relacionar ambas cosas.
 
-# Tuve problemas para entender por qué en la devolución con return, cuando done = True,
+- Tuve problemas para entender por qué en la devolución con return, cuando done = True,
 tenía que devolver todo el diccionario o no.Llegamos a la conclusión de que lo demás no
 importaba, porque done indica que ya está todo listo, así que no hace falta devolver las
  otras variables si igual después se van a reiniciar.
-Así mismo, llegamos a la conclusión de siempre poner la condición del return "done"=True
- al comenzar la fn step().
-# Tuve inconvenientes debuggeando en Visual Studio Code, así que terminé haciendo una
+Así mismo, llegamos a la conclusión de siempre poner la condición del return "done"=True al comenzar la fn step().
+- Tuve inconvenientes debuggeando en Visual Studio Code, así que terminé haciendo una
 función con un while llamando a step() para ver qué hacía mi script en Pyscripter.
 
-# Llegamos a la conclusión de que si no poníamos un return en cada condicional, el
+- Llegamos a la conclusión de que si no poníamos un return en cada condicional, el
 visualizador no funcionaba porque no recibía datos.
 
-# Se implementó la fn buscar() que...
+- Se implementó la fn buscar() que...
 
 def step():
     global items, n, i, j, min_idx, fase
@@ -113,7 +111,7 @@ def buscar():
     min_idx=i
     fase="buscar"
 
-##informe de insertion_sort:
+#informe de insertion_sort:
 
 No se había colocado el global i, j, min_idx, fase en la función step(), lo cual hacia que ni funcione.
 
