@@ -2,7 +2,7 @@ Integrantes:
 Cazzari Tusquet, Máximo
 Castro, Hernán
 
-Bubble Sort:
+##Bubble Sort:
 - Fecha 25/11
 
 def step()
@@ -48,8 +48,72 @@ Notas:
 - Si se utilizan las variables que estan fuera de la función step, se las debe declarar como global dentro de esta.
 - El condicional que retorna "done":True debe estar al principio, ya que primero verifica si el algoritmo terminó o debe continuar.
 
-## Observaciones dadas por los docentes:
-Código repetido en la comparación y swap en el inner-loop y outer-loop.
-## Solución:
-Se movió el bloque de comparación y swap fuera del if (j+1 == n-i) porque estaba escrito dos veces con la misma lógica. Se comparaba 
+# Observaciones dadas por los docentes:
+- Código repetido en la comparación y swap en el inner-loop y outer-loop.
+#Solución:
+- Se movió el bloque de comparación y swap fuera del if (j+1 == n-i) porque estaba escrito dos veces con la misma lógica. Se comparaba 
 mientras el iterador llegaba hacia el final y de nuevo al llegar al final, generando código duplicado.
+
+
+
+
+
+
+
+##Informe de selection_sort:
+fecha 27nov
+
+# Al principio no le veía sentido a la variable n y tampoco entendía cómo finalizar un
+barrido. Después pude relacionar ambas cosas.
+
+# Tuve problemas para entender por qué en la devolución con return, cuando done = True,
+tenía que devolver todo el diccionario o no.Llegamos a la conclusión de que lo demás no
+importaba, porque done indica que ya está todo listo, así que no hace falta devolver las
+ otras variables si igual después se van a reiniciar.
+Así mismo, llegamos a la conclusión de siempre poner la condición del return "done"=True
+ al comenzar la fn step().
+# Tuve inconvenientes debuggeando en Visual Studio Code, así que terminé haciendo una
+función con un while llamando a step() para ver qué hacía mi script en Pyscripter.
+
+# Llegamos a la conclusión de que si no poníamos un return en cada condicional, el
+visualizador no funcionaba porque no recibía datos.
+
+# Se implementó la fn buscar() que...
+
+def step():
+    global items, n, i, j, min_idx, fase
+
+    if i==n-1:
+        return {"done": True}
+
+    while j<n: ##barrido
+        fase="buscar"
+        if items[j]<items[min_idx]:
+            min_idx=j
+            return {"a": min_idx, "b": j, "swap": False, "done": False}
+        j+=1
+        return {"a": min_idx, "b": j, "swap": False, "done": False}
+
+    if j==n: ##barrido terminado, fase swap
+        fase="swap"
+        if min_idx!=i:
+            a=i
+            b=min_idx
+            items[i],items[min_idx]=items[min_idx],items[i]
+            buscar()
+            return {"a": a, "b": b, "swap": True, "done": False}
+        else:
+            buscar()
+            return {"a": i, "b": min_idx, "swap": True, "done": False}
+
+def buscar():
+    global items, n, i, j, min_idx, fase
+    i+=1
+    j=i+1
+    min_idx=i
+    fase="buscar"
+
+##informe de insertion_sort:
+
+No se había colocado el global i, j, min_idx, fase en la función step(), lo cual hacia que ni funcione.
+
