@@ -22,7 +22,7 @@ def step():
 
 
     if i >= n:
-        return {"a": a, "b": b, "swap": False, "done": True}
+        return {"done": True}
 
     if j is None:
         j=i
@@ -30,11 +30,11 @@ def step():
 
     while j > 0 and items[j-1] > items[j]:
         items[j-1],items[j]=items[j],items[j-1]
-        {"a": a, "b": b, "swap": True, "done": False}
+        return {"a": a, "b": b, "swap": True, "done": False}
 
     if j<=0:
         i+=1
         j=None
-        return {"a": a, "b": b, "swap": True, "done": False}
+         return {"a": a, "b": b, "swap": False, "done": False}
     ##deberia devolver algo?
 
